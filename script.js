@@ -74,6 +74,11 @@ const stopwatchStatus =
     "stopwatchStatus"
   );
 
+function setStopwatchStatus(isRunning) {
+  stopwatchStatus.classList.toggle("running", isRunning);
+  stopwatchStatus.classList.toggle("paused", !isRunning);
+}
+
 
 const startBtn =
   document.getElementById("startBtn");
@@ -165,6 +170,7 @@ function startStopwatch() {
 
   stopwatchStatus.textContent =
     "RUNNING";
+  setStopwatchStatus(true);
 
 
   stopwatchInterval =
@@ -210,6 +216,7 @@ function pauseStopwatch() {
 
   stopwatchStatus.textContent =
     "PAUSED";
+  setStopwatchStatus(false);
 }
 
 
@@ -237,8 +244,10 @@ function resetStopwatch() {
 
   stopwatchStatus.textContent =
     "PAUSED";
+  setStopwatchStatus(false);
 }
 
+setStopwatchStatus(false);
 
 
 // ==========================================
